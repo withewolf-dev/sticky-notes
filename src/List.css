@@ -1,0 +1,36 @@
+
+.square {
+  height: 270px;
+  width: 270px;
+  background-color:rgb(153, 167, 36);
+  text-decoration-color:black;
+  color: rgb(27, 3, 3);
+}
+
+.button {
+  background-color: blueviolet; /* Green */
+  border: none;
+  border-radius: 2px;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  
+}
+
+.button2 {
+  transition-duration: 0.4s;
+  background-color: white;
+  color: black;
+  border: 2px solid #4CAF50;
+  padding: 9px 23px;
+  border-radius: 2px;
+}
+
+.button2:hover {
+  background-color: #4CAF50; /* Green */
+  color: white;
+  
+}
