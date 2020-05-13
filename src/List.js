@@ -1,8 +1,42 @@
 import React, { Component } from 'react'
 import './List.css'
+//import { makeStyles } from '@material-ui/core/styles';
+import { withStyles } from "@material-ui/core/styles";
 import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+import Box from '@material-ui/core/Box';
 
-export default class List extends Component {
+const useStyles = ()=>({
+  root: {
+    minWidth: 275,
+  },
+  bullet: {
+    display: 'inline-block',
+    margin: '0 2px',
+    transform: 'scale(0.7)',
+    minWidth: 275,
+    marginBottom: 12,
+    flexDirection:'row',
+     flexWrap:'wrap' 
+    
+  },
+
+  title: {
+    fontSize: 14,
+    flexDirection:'row',
+     flexWrap:'wrap' 
+  },
+  pos: {
+    marginBottom: 12,
+  },
+});
+
+ class List extends Component {
+
+    
     constructor(props) {
         super(props)
     
@@ -30,8 +64,8 @@ export default class List extends Component {
     }
 
     render() {
-        
-        const {note,id,remove} = this.props 
+        const {classes}= this.props 
+        const {note,id,remove} = this.props
         console.log(note)
         let result
         if(this.state.isediting){
@@ -49,14 +83,42 @@ export default class List extends Component {
             )
         }else{
             result=(
-                <div>
-            <li className='square' key={id}>
-                {note}
+              <Card className={classes.bullet}>
+                <Box component="span" m={1}>
+                <CardContent>
+                <Typography className={classes.title} color="textSecondary" gutterBottom>
+                  <br/>
+                </Typography>
                 
-            </li>   
-            <button onClick={this.toggleEdit} > edit </button>
-            <button onClick={remove}> delete </button>         
-            </div>
+                <Typography align='center'  variant="h5" component="h2" key={id}>
+                  {note}
+                </Typography>
+                
+                <Typography className={classes.pos} color="textSecondary">
+                  <br/>
+                </Typography>
+                <Typography variant="body2" component="p">
+                 <br/>
+                </Typography>
+              </CardContent>
+              <CardActions>
+                <Button onClick={this.toggleEdit} size="small"> edit </Button>
+                <Button onClick={remove} size="small"> delete</Button>
+              </CardActions>
+              </Box>
+            </Card>
+                
+             
+          
+            
+            //     <div>
+            // <li className='square' key={id}>
+            //     {note}
+                
+            // </li>   
+            // <button onClick={this.toggleEdit} > edit </button>
+            // <button onClick={remove}> delete </button>         
+            // </div>
             )
         }
         
@@ -65,3 +127,4 @@ export default class List extends Component {
     
     }
 }
+export default withStyles(useStyles)(List)

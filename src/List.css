@@ -2,9 +2,7 @@
 .square {
   height: 270px;
   width: 270px;
-  background-color:rgb(153, 167, 36);
-  text-decoration-color:black;
-  color: rgb(27, 3, 3);
+ 
 }
 
 .button {
@@ -33,4 +31,21 @@
   background-color: #4CAF50; /* Green */
   color: white;
   
+}
+.root{
+  min-Width: 275;
+}
+.bullet{
+  display: 'inline-block';
+  margin: '0 2px';
+  transform: 'scale(0.8)';
+}
+title{
+  font-Size: 14;
+}
+pos{
+  margin-Bottom: 12;
+}
+p {
+  margin: 25px 50px 75px 100px;
 }
