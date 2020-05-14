@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {v4 as uuid} from 'uuid'
-import './List.css'
+//import './List.css'
 export default class Form extends Component {
     constructor(props) {
         super(props)
@@ -19,7 +19,7 @@ export default class Form extends Component {
         this.setState({
             [e.target.name]:e.target.value
         })
-        console.log(this.state.notes)
+        
     }
     handleSubmit=(e)=>{
         e.preventDefault()
@@ -35,7 +35,7 @@ export default class Form extends Component {
             <div >
            
                 {this.state.isWriting ? ( <form onSubmit={this.handleSubmit}>
-                <input
+                <textarea
                     name='notes'
                     placeholder='write'
                     value={this.state.notes}
