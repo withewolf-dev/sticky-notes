@@ -97,7 +97,7 @@ class List extends Component {
                 align="center"
                 variant="h5"
                 component="h2"
-                key={id}
+                
               >
                 <li key={id}>
                   {note}

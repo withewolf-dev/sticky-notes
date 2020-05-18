@@ -6,74 +6,72 @@ import List from "./List";
 export default class StickyNotes extends Component {
   constructor(props) {
     super(props);
-   
+
 
     this.state = {
       sticky: []
     };
-   
-      
+
+
   }
-  
+
   componentDidMount() {
-    const json = localStorage.getItem('sticky')
-    const sticky = JSON.parse(json)
-    this.setState(() => ({ sticky }))
+    const json = localStorage.getItem('sticky') || "[]"
+     const sticky = JSON.parse(json)
+     this.setState(() => ({ sticky }))
+    
+}
 
-
-  }  
-  
   // componentDidUpdate(prevProps, prevStates){
   //   const json = JSON.stringify(this.state.sticky)
   //   localStorage.setItem('sticky', json)
   // }
-  
+
   addNotes = (note) => {
+
    
-      // this.setState(st=>({
-      //   sticky: [...st.sticky, note],
-      // }),
-      // ()=>window.localStorage.setItem('sticky',JSON.stringify(this.state.sticky)
-      // )
-      // );
+
       this.setState(st=>({
         sticky: [...this.state.sticky, note],
       }),
       ()=>window.localStorage.setItem('sticky',JSON.stringify(this.state.sticky)
       )
       );
-    
+
   }
 
   remove = (id) => {
-    this.setState({
-      sticky: this.state.sticky.filter((t) => t.id !== id),
-    });
+    this.setState(st=>({
+      sticky: this.state.sticky.filter((t) => t.id !== id)
+    }),
+    ()=>window.localStorage.setItem('sticky',JSON.stringify(this.state.sticky))
+    )
+    
   };
 
 
   updateEdit = (id, updatedNote) => {
     const updatesticky = this.state.sticky.map((note) => {
       if (note.id === id) {
-        console.log('uppdate',note.id)
-
-        return { sticky:this.state.sticky, notes: updatedNote };
+       
+        return { ...this.state.sticky, notes: updatedNote };
       }
       return note;
     });
     this.setState(st=>({
       sticky: updatesticky
     }),
-     ()=>window.localStorage.setItem('sticky',JSON.stringify(this.state.sticky)
+     ()=>window.localStorage.setItem(
+       'sticky',JSON.stringify(this.state.sticky)
     )
     );
   };
 
 
   render() {
-  
+
     const notes = this.state.sticky.map((note) => {
-      console.log(note.id)
+      console.log(note.notes)
       return (
         <List
           note={note.notes}
